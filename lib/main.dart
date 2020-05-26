@@ -36,6 +36,7 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text('My First App'),
+          backgroundColor: Colors.deepPurple,
         ),
         body: Column(
           children: [
