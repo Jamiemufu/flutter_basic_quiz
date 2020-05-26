@@ -10,10 +10,11 @@ class Question extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(20),
+      padding: EdgeInsets.only(bottom: 300, top: 25),
       child: Text(
         questionText,
         style: TextStyle(
-          fontSize: 22,
+          fontSize: 26,
           color: Colors.deepPurple,
         ),
         textAlign: TextAlign.center,
