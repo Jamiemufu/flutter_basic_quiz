@@ -1,58 +1,61 @@
-//default import for UI
 import 'package:flutter/material.dart';
 
-void main() {
-  //run myApp
-  runApp(MyApp());
-}
+import './question.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  // function for onPressed instead of anon function
-  var questionIndex = 0;
+class _MyAppState extends State<MyApp> {
+  var _questionIndex = 0;
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
-      questionIndex = questionIndex + 1;
+      _questionIndex = _questionIndex + 1;
     });
-
-    print(questionIndex);
+    print(_questionIndex);
   }
 
-  //states we are overing StatelessWidget
   @override
   Widget build(BuildContext context) {
     var questions = [
-      "What's your favorite color?",
-      "What's your favorite animal?",
-      "What's your favorite place?"
+      'What\'s your favorite color?',
+      'What\'s your favorite animal?',
     ];
-    // returns the widget text
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-            title: Text('My First App'), backgroundColor: Colors.deepPurple),
+          title: Text('My First App'),
+        ),
         body: Column(
-          children: <Widget>[
-            Text(questions[questionIndex]),
+          children: [
+            Question(
+              questions[_questionIndex],
+            ),
             RaisedButton(
               child: Text('Answer 1'),
-              onPressed: answerQuestion,
+              onPressed: _answerQuestion,
             ),
             RaisedButton(
               child: Text('Answer 2'),
-              onPressed: () => print("Answer 2 Chosen"),
+              onPressed: () => print('Answer 2 chosen!'),
             ),
             RaisedButton(
               child: Text('Answer 3'),
-              onPressed: () => print("Answer 3 Chosen"),
+              onPressed: () {
+                // ...
+                print('Answer 3 chosen');
+              },
             ),
           ],
         ),
