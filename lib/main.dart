@@ -10,7 +10,6 @@ import './result.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return _MyAppState();
@@ -18,28 +17,49 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
   var _questionIndex = 0;
+  var _finalScore = 0;
 
   final _questions = const [
     {
       'questionText': "What's your favorite colour?",
-      'answers': ['black', 'green', 'pink', 'yellow'],
+      'answers': [
+        {'text': 'black', 'score': 4},
+        {'text': 'green', 'score': 5},
+        {'text': 'yellow', 'score': 10},
+      ],
     },
     {
       'questionText': "What's your favorite animal?",
-      'answers': ['cat', 'dog', 'frog', 'rabbit'],
+      'answers': [
+        {'text': 'black', 'score': 4},
+        {'text': 'green', 'score': 5},
+        {'text': 'yellow', 'score': 10},
+      ],
     },
     {
       'questionText': "What's your favorite colour?",
-      'answers': ['black', 'green', 'pink', 'yellow'],
+      'answers': [
+        {'text': 'black', 'score': 4},
+        {'text': 'green', 'score': 5},
+        {'text': 'yellow', 'score': 10},
+      ],
     },
   ];
 
-  void _answerQuestion() {
+  void _resetQuiz() {
     setState(() {
+      _questionIndex = 0;
+      _finalScore = 0;
+    });
+  }
+
+  void _answerQuestion(int score) {
+    setState(() {
+      _finalScore += score;
       _questionIndex = _questionIndex + 1;
     });
+
     print(_questionIndex);
 
     if (_questionIndex < _questions.length) {
@@ -57,8 +77,6 @@ class _MyAppState extends State<MyApp> {
             ),
             body: _questionIndex < _questions.length
                 ? Quiz(_questions, _questionIndex, _answerQuestion)
-                : Result()
-              )
-            );
+                : Result(_finalScore, _resetQuiz)));
   }
 }
