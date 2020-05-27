@@ -10,7 +10,7 @@ class Question extends StatelessWidget {
     return Container(
       width: double.infinity,
       margin: EdgeInsets.all(20),
-      padding: EdgeInsets.only(bottom: 250, top: 25),
+      padding: EdgeInsets.only(bottom: 15),
       child: Text(
         questionText,
         style: TextStyle(
