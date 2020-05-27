@@ -20,11 +20,32 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
 
+  final questions = const [
+    {
+      'questionText': "What's your favorite colour?",
+      'answers': ['black', 'green', 'pink', 'yellow'],
+    },
+    {
+      'questionText': "What's your favorite animal?",
+      'answers': ['cat', 'dog', 'frog', 'rabbit'],
+    },
+    {
+      'questionText': "What's your favorite colour?",
+      'answers': ['black', 'green', 'pink', 'yellow'],
+    },
+  ];
+
   void _answerQuestion() {
+
     setState(() {
       _questionIndex = _questionIndex + 1;
     });
     print(_questionIndex);
+
+    if (_questionIndex < questions.length) {
+      print("We have more questions");
+    }
+    
   }
 
   @override
@@ -63,7 +84,7 @@ class _MyAppState extends State<MyApp> {
           ],
         )
         : Center(
-          child: Text("DONE")-
+          child: Text("DONE")
         )
       ),
     );
